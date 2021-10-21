@@ -1,0 +1,57 @@
+public class Movement : MonoBehaviour
+{
+
+    public GameObject Player;
+
+    public GameObject Opponet;
+
+    public float Speed = 10.0F;
+    public float Speedy = 60.0F;
+    
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+    //Input.GetKeyDown(KeyCode.Mouse0)
+    //float VerticalMovement = Input.GetAxis("Horizontal") * Speedy;
+    //
+    // Update is called once per frame
+    void Update()
+    {
+        MovementOfBAttle();
+        MovementClose();
+    }
+
+    void MovementOfBAttle()
+    {
+        float VerticalMovement = Input.GetAxis("Horizontal") * Speedy;
+        float HorizontalMovement = Input.GetAxis("Vertical") * Speedy;
+        VerticalMovement *= Time.deltaTime;
+        HorizontalMovement *= Time.deltaTime;
+
+        
+        //Player.transform.Translate(-HorizontalMovement, 0, 0);
+        //Opponet.transform.Translate(HorizontalMovement, 0, 0);
+        transform.Rotate(0, -VerticalMovement, 0);
+        transform.Rotate(0, 0, -HorizontalMovement);
+    }
+
+    void MovementClose()
+    {
+        float VerticalMovements = Input.GetAxis("ADHorizontal") * Speed;
+        float HorizontalMovements = Input.GetAxis("WSVertical") * Speed;
+        VerticalMovements *= Time.deltaTime;
+        HorizontalMovements *= Time.deltaTime;
+        
+
+
+
+        Player.transform.Translate(HorizontalMovements, 0, 0);
+        Opponet.transform.Translate(-HorizontalMovements, 0, 0);
+    }
+
+    
+
+}
